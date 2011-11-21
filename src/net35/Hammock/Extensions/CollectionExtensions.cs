@@ -7,6 +7,7 @@ using Hammock.Web;
 using Hammock.Silverlight.Compat;
 #else
 using System.Collections.Specialized;
+using Hammock.Authentication.OAuth;
 #endif
 
 namespace Hammock.Extensions
@@ -95,9 +96,9 @@ namespace Hammock.Extensions
 
             foreach (var item in collection)
             {
-                sb.Append(item.Name);
+                sb.Append(OAuthTools.UrlEncodeRelaxed(item.Name));
                 sb.Append(separator);
-                sb.Append(item.Value);
+                sb.Append(OAuthTools.UrlEncodeRelaxed(item.Value));
 
                 count++;
                 if (count < total)
